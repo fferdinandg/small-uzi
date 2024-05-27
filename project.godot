@@ -12,7 +12,7 @@ config_version=4
 
 config/name="Small Uzi"
 config/description="Use and uzi to kill enemies lol"
-run/main_scene="res://scenes/menu.tscn"
+run/main_scene="res://scenes/Cutscene1.tscn"
 config/icon="res://assets/weapon.png"
 
 [autoload]
@@ -23,6 +23,8 @@ Transition="*res://autoloads/transition.gd"
 
 window/size/width=1920
 window/size/height=1080
+window/size/borderless=true
+window/size/fullscreen=true
 
 [gui]
 
