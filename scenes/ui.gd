@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+
 func _ready():
 	get_tree().paused = false
 	$pause/ColorRect.hide()
@@ -25,6 +26,7 @@ func _on_menu_pressed():
 	get_tree().change_scene("res://scenes/menu.tscn")
 	
 func failed():
+	$"failed/ColorRect/Panel/VBoxContainer/Kill Count".show_kills()
 	$failed/ColorRect.show()
 	
 func unlock():

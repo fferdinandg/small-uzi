@@ -141,7 +141,7 @@ position = Vector2( 32, 32 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 23 )
 animation = "Idle"
-frame = 6
+frame = 1
 playing = true
 
 [node name="Weapon" type="Sprite" parent="."]

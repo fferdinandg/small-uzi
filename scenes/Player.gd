@@ -7,9 +7,11 @@ export var direction = Vector2.ZERO
 export var speed: int = 400
 export var jump_speed: int = -600
 export var health: int = 20
-var has_melee = false;
-var is_meleeing = false;
+var has_melee = false
+var is_meleeing = false
 var kill_count = 0
+export var cheats = false
+onready var weapon = $Weapon
 
 
 
@@ -31,6 +33,7 @@ func get_input():
 	if Input.is_action_just_pressed("melee"):
 		if kill_count >= 10:
 			melee()
+		
 
 
 func _physics_process(_delta):
@@ -46,20 +49,24 @@ func _process(_delta):
 		if velocity.x > 0:
 			$AnimatedSprite.flip_h = false
 			$Melee.position.x = 10
+			#weapon.position.x = 0
 			$Melee/Sprite.flip_h = false
 		else:
 			$AnimatedSprite.flip_h = true
 			$Melee.position.x = -150
+			#weapon.position.x = -94
 			$Melee/Sprite.flip_h = true
 	elif velocity.x != 0 && is_meleeing == false:
 		$AnimatedSprite.play("Walk") 
 		if velocity.x > 0:
 			$AnimatedSprite.flip_h = false
 			$Melee.position.x = 10
+			#weapon.position.x = 0
 			$Melee/Sprite.flip_h = false
 		else:
 			$AnimatedSprite.flip_h = true
 			$Melee.position.x = -150
+			#weapon.position.x = -94
 			$Melee/Sprite.flip_h = true
 	else:
 		if is_meleeing == false:

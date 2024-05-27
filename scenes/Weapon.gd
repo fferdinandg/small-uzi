@@ -3,6 +3,7 @@ extends Sprite
 
 var can_fire = true
 var bullet = preload("res://scenes/Bullets.tscn")
+onready var cheats = false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -20,11 +21,23 @@ func _physics_process(delta):
 	look_at(mouse_pos)
 	
 	if Input.is_action_pressed("fire") and can_fire:
-		var bullet_instance = bullet.instance()	
+		var bullet_instance = bullet.instance()
 		bullet_instance.rotation = rotation + rand_range(0.1,0.1)
 		get_parent().screenshake._shake(0.2,1.3)
 		bullet_instance.global_position = $Muzzle.global_position
 		get_parent().add_child(bullet_instance)
 		can_fire = false
-		yield(get_tree().create_timer(0.1), "timeout")
+		if cheats:
+			yield(get_tree().create_timer(0.01), "timeout")
+		else:
+			yield(get_tree().create_timer(0.1), "timeout")
 		can_fire = true
+		
+	if Input.is_action_just_pressed("delete"):
+		if cheats == false:
+			cheats = true
+			print("bruh activated")
+		elif cheats == true:
+			cheats = false
+			print("bruh deactivated")
+
